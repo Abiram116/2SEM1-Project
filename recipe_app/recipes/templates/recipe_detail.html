@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="recipe-detail">
+        <h1>{{ recipe.name }}</h1>
+        <img src="{{ recipe.image.url }}" alt="{{ recipe.name }}" class="recipe-image">
+        <p>{{ recipe.description }}</p>
+        <p>Rating: {{ recipe.rating }}</p>
+    </div>
+{% endblock %}

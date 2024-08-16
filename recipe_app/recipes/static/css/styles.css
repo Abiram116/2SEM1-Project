@@ -1,0 +1,121 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure body takes at least the full height of the viewport */
+}
+
+header {
+    background-color: #ff6f61;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
+
+h1 {
+    margin: 0;
+}
+
+#inspiring-recipes {
+    margin: 2rem;
+}
+
+.recipe-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.recipe-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.recipe-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+#updates {
+    margin: 2rem;
+}
+
+#updates ul {
+    list-style: none;
+    padding: 0;
+}
+
+#updates li {
+    background-color: #fff;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    border-left: 5px solid #ff6f61;
+    border-radius: 5px;
+}
+
+/* Menu bar styles */
+nav {
+    margin: 0;
+    padding: 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav li {
+    margin: 0 1rem;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    background-color: #ff3b2b; /* Slightly darker shade for hover effect */
+    border-radius: 4px;
+}
+
+
+/* Styles for the recipe detail page */
+.recipe-detail {
+    max-width: 300px; /* Max width for the detail view */
+    margin: 2rem auto; /* Center the content */
+    padding: 1.5rem;
+    background-color: #fff; /* Background color */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.recipe-image {
+    max-width: 100%; /* Maximum width of the image */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px; /* Rounded corners */
+    margin-bottom: 1rem; /* Space below the image */
+}
+
+/* Footer Styles */
+footer {
+    margin-top: auto; /* Push footer to the bottom of the page */
+    padding: 1rem;
+    background-color: #333;
+    color: white;
+    text-align: center;
+}

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section id="inspiring-recipes">
+        <h2>Inspiring Recipes</h2>
+        <div class="recipe-grid">
+            {% for recipe in inspiring_recipes %}
+            <div class="recipe-card">
+                <img src="{{ recipe.image.url }}" alt="{{ recipe.name }}">
+                <h3>{{ recipe.name }}</h3>
+                <p>{{ recipe.description|truncatewords:20 }}</p>
+                <a href="{% url 'recipe_detail' recipe.id %}">View Recipe</a>
+                <button onclick="addToMyRecipes({{ recipe.id }})">Add to My Recipes</button>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+{% endblock %}
