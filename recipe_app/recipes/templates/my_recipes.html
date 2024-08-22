@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>My Recipes</h2>
+<div class="recipe-grid">
+    {% for recipe in recipes %}
+    <div class="recipe-card">
+        <img src="{{ recipe.image.url }}" alt="{{ recipe.name }}">
+        <h3>{{ recipe.name }}</h3>
+        <p>{{ recipe.description }}</p>
+        <h4>Ingredients:</h4>
+        <ul>
+            {% for ingredient in recipe.ingredients.all %}
+            <li>{{ ingredient.name }}</li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'recipe_detail' recipe.id %}">View Full Recipe</a>
+    </div>
+    {% endfor %}
+</div>
+<a href="{% url 'clear_my_recipes' %}">Clear My Recipes</a>
+{% endblock %}

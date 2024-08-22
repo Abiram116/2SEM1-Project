@@ -14,16 +14,16 @@
         <nav>
             <ul>
                 <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'my_recipes' %}">My Recipes</a></li>
+
                 <li><a href="#">About</a></li>
                 <li><a href="#">Contact</a></li>
-                <!-- Add other links as needed -->
             </ul>
         </nav>
     </header>
 
     <main>
         {% block content %}
-        <!-- Page-specific content will go here -->
         {% endblock %}
     </main>
 

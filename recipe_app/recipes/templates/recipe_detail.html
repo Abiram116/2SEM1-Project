@@ -3,7 +3,9 @@
 {% block content %}
     <div class="recipe-detail">
         <h1>{{ recipe.name }}</h1>
-        <img src="{{ recipe.image.url }}" alt="{{ recipe.name }}" class="recipe-image">
+        <div class="recipe-detail-image-container">
+            <img src="{{ recipe.image.url }}" alt="{{ recipe.name }}">
+        </div>
         <p>{{ recipe.description }}</p>
         <p>Rating: {{ recipe.rating }}</p>
     </div>

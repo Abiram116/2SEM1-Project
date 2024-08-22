@@ -1,19 +1,31 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <section id="inspiring-recipes">
-        <h2>Inspiring Recipes</h2>
-        <div class="recipe-grid">
-            {% for recipe in inspiring_recipes %}
-            <div class="recipe-card">
-                <img src="{{ recipe.image.url }}" alt="{{ recipe.name }}">
+<section id="inspiring-recipes">
+    <h2>Inspiring Recipes</h2>
+    <div class="recipe-grid">
+        {% for recipe in inspiring_recipes %}
+        <div class="recipe-card">
+            <img src="{{ recipe.image.url }}" alt="{{ recipe.name }}">
+            <div class="recipe-card-content">
                 <h3>{{ recipe.name }}</h3>
                 <p>{{ recipe.description|truncatewords:20 }}</p>
-                <a href="{% url 'recipe_detail' recipe.id %}">View Recipe</a>
-                <button onclick="addToMyRecipes({{ recipe.id }})">Add to My Recipes</button>
+                <div class="recipe-card-actions">
+                    <a href="{% url 'recipe_detail' recipe.id %}">View Recipe</a>
+                    <button onclick="location.href='{% url 'add_to_my_recipes' recipe.id %}'">Add to My Recipes</button>
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="ingredientsDropdown-{{ recipe.id }}"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Ingredients
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="ingredientsDropdown-{{ recipe.id }}">
+                        {% for ingredient in recipe.ingredients_list %}
+                        <li>{{ ingredient }}</li>
+                        {% endfor %}
+                    </ul>                    
+                </div>
             </div>
-            {% endfor %}
         </div>
-    </section>
-
+        {% endfor %}
+    </div>
+</section>
 {% endblock %}
