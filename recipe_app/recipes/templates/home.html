@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
 <section id="inspiring-recipes">
@@ -11,17 +12,23 @@
                 <h3>{{ recipe.name }}</h3>
                 <p>{{ recipe.description|truncatewords:20 }}</p>
                 <div class="recipe-card-actions">
-                    <a href="{% url 'recipe_detail' recipe.id %}">View Recipe</a>
-                    <button onclick="location.href='{% url 'add_to_my_recipes' recipe.id %}'">Add to My Recipes</button>
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="ingredientsDropdown-{{ recipe.id }}"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Ingredients
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="ingredientsDropdown-{{ recipe.id }}">
-                        {% for ingredient in recipe.ingredients_list %}
-                        <li>{{ ingredient }}</li>
-                        {% endfor %}
-                    </ul>                    
+                    <a href="{% url 'recipe_detail' recipe.id %}" class="btn btn-primary" title="View Recipe">
+                        <i class="fas fa-eye"></i>
+                    </a>
+                    <a href="{% url 'add_to_my_recipes' recipe.id %}" class="btn btn-success" title="Add to My Recipes">
+                        <i class="fas fa-plus"></i>
+                    </a>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="ingredientsDropdown-{{ recipe.id }}"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Ingredients
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="ingredientsDropdown-{{ recipe.id }}">
+                            {% for ingredient in recipe.ingredients_list %}
+                            <li><a class="dropdown-item" href="#">{{ ingredient }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

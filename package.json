@@ -1,0 +1,17 @@
+{
+  "name": "2sem1-project",
+  "version": "1.0.0",
+  "description": "**Figma Team Project Link**-> [https://www.figma.com/team_invite/redeem/kWwI5A9YRAwLy64DLlExv0](url)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fullcalendar/core": "^6.1.15",
+    "@fullcalendar/daygrid": "^6.1.15",
+    "@fullcalendar/interaction": "^6.1.15"
+  }
+}

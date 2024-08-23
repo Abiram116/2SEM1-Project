@@ -32,8 +32,8 @@ def my_recipes(request):
     return render(request, 'my_recipes.html', {'recipes': recipes})
 
 def clear_my_recipes(request):
-    # Clear the session data for "my_recipes"
-    request.session['my_recipes'].clear()
+    if 'my_recipes' in request.session:
+        del request.session['my_recipes']
     return redirect('my_recipes')
 
 def recipe_detail(request, pk):
