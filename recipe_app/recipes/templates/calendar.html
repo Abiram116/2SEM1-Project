@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+  <!-- Link to FullCalendar CSS from CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css" rel="stylesheet" />
+  <!-- Link to jQuery UI CSS -->
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <!-- Include Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Basic styling for sidebar and calendar */
+    #calendar-container {
+      display: flex;
+      align-items: flex-start;
+    }
+    #sidebar {
+      width: 250px;
+      padding: 20px;
+      border-right: 2px solid #ddd;
+      background-color: #f9f9f9;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    }
+    #sidebar h3 {
+      margin-top: 0;
+      font-size: 1.5em;
+      color: #333;
+    }
+    #recipe-list {
+      list-style: none;
+      padding: 0;
+    }
+    #recipe-list li {
+      padding: 10px;
+      margin-bottom: 10px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      cursor: move;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      color: #444;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+    #recipe-list li:hover {
+      background-color: #e0e0e0;
+      transform: scale(1.02);
+    }
+    #calendar {
+      flex: 1;
+      padding: 20px;
+    }
+    @media (max-width: 768px) {
+      #calendar-container {
+        flex-direction: column;
+      }
+      #sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 2px solid #ddd;
+      }
+      #calendar {
+        width: 100%;
+      }
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+  <div id="calendar-container">
+    <div id="sidebar">
+      <h3>My Recipes</h3>
+      <ul id="recipe-list">
+        {% for recipe in recipes %}
+          <li>{{ recipe.name }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div id='calendar'></div>
+  </div>
+{% endblock %}
+
+{% block extra_js %}
+  <!-- Include jQuery from CDN -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Include jQuery UI from CDN -->
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <!-- Include FullCalendar JS from CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js"></script>
+  <!-- Include Bootstrap JS (optional, if needed) -->
+  <script src="https://code.jquery.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    $(document).ready(function() {
+        // Initialize FullCalendar
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek,timeGridDay'
+            },
+            themeSystem: 'bootstrap', // Use Bootstrap theme for FullCalendar
+            editable: true,
+            droppable: true
+        });
+        calendar.render();
+
+        // Initialize jQuery UI Draggable for recipe items
+        $('#recipe-list li').draggable({
+            helper: 'clone',
+            revert: 'invalid' // Revert if not dropped on a valid target
+        });
+
+        // Handle drop events on the calendar
+        $('#calendar').droppable({
+            accept: '#recipe-list li',
+            drop: function(event, ui) {
+                var recipeTitle = $(ui.helper).text(); // Get the title of the dragged item
+                calendar.addEvent({
+                    title: recipeTitle,
+                    start: calendar.getDate(),
+                    allDay: true
+                });
+            }
+        });
+    });
+  </script>
+{% endblock %}
