@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Profile - {{ user.username }}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <img src="{% static 'images/default-avatar.png' %}" alt="Profile Picture" class="rounded-circle img-fluid mb-3" style="width: 150px; height: 150px; object-fit: cover;">
+                    <h3 class="card-title">{{ user.username }}</h3>
+                    <p class="text-muted">Member since {{ user.date_joined|date:"F d, Y" }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Profile Information</h4>
+                    <hr>
+                    <div class="row mb-3">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">Email</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            {{ user.email }}
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">Full Name</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            {{ user.first_name }} {{ user.last_name }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <a class="btn btn-primary" href="#">Edit Profile</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mt-3">
+                <div class="card-body">
+                    <h4 class="card-title">My Recipes</h4>
+                    <hr>
+                    <!-- Add a list or grid of user's recipes here -->
+                    <p class="text-muted">You haven't created any recipes yet.</p>
+                    <a href="{% url 'create_recipe' %}" class="btn btn-secondary">Create New Recipe</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

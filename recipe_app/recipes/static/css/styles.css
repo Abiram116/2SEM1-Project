@@ -20,39 +20,65 @@ body {
     line-height: 1.6;
 }
 
-header {
+/* Updated Navbar Styles */
+.navbar {
     background-color: var(--primary-color);
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+}
+
+.navbar-brand img {
+    height: 40px;
+    transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover img {
+    transform: scale(1.05);
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: var(--text-color);
+    font-weight: 500;
+    position: relative;
+    padding: 0.5rem 1rem;
+}
+
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link:focus {
+    color: var(--primary-color);
+}
+
+.navbar-light .navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.navbar-light .navbar-nav .nav-link:hover::after {
+    width: 100%;
+}
+
+.navbar-light .navbar-toggler {
+    border-color: var(--primary-color);
+}
+
+.navbar-light .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(52, 152, 219, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Existing styles */
+header {
     color: white;
     padding: 1rem 2rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
     margin: 0;
     font-size: 2rem;
-}
-
-nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 1rem 0 0;
-    display: flex;
-}
-
-nav ul li {
-    margin-right: 1rem;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    transition: background-color 0.3s;
-}
-
-nav ul li a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
 }
 
 main {
@@ -191,12 +217,52 @@ h2 {
     opacity: 0.7;
 }
 
+/* Profile Page Styles */
+.card {
+    border: none;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
 footer {
     background-color: var(--primary-color);
     color: white;
     text-align: center;
     padding: 1rem;
     margin-top: auto;
+}
+
+@media (max-width: 991px) {
+    .navbar-nav {
+        padding-top: 1rem;
+    }
+    .navbar-nav .nav-item {
+        text-align: center;
+    }
 }
 
 @media (max-width: 768px) {
@@ -208,15 +274,6 @@ footer {
 @media (max-width: 480px) {
     header {
         padding: 1rem;
-    }
-    
-    nav ul {
-        flex-direction: column;
-    }
-    
-    nav ul li {
-        margin-right: 0;
-        margin-bottom: 0.5rem;
     }
     
     .recipe-grid {
