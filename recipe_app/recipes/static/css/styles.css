@@ -229,20 +229,38 @@ h2 {
     border: none;
     box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     transition: all 0.3s ease;
+    border-radius: 15px;
 }
 
 .card:hover {
     box-shadow: 0 8px 16px rgba(0,0,0,0.1);
 }
 
+.card-header {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1.5rem;
+}
+
+.card-body {
+    padding: 2rem;
+}
+
 .btn-primary {
     background-color: var(--primary-color);
     border-color: var(--primary-color);
+    transition: all 0.3s ease;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
 }
 
 .btn-primary:hover {
     background-color: var(--secondary-color);
     border-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
 }
 
 .btn-secondary {
@@ -266,10 +284,10 @@ h2 {
 }
 
 .ingredients-heading {
-    font-size: 18px; /* Adjust font size as needed */
-    font-weight: normal; /* Make the font weight lighter */
-    margin-top: 20px; /* Add some spacing */
-    text-align: left; /* Align to the left */
+    font-size: 18px;
+    font-weight: normal;
+    margin-top: 20px;
+    text-align: left;
 }
 
 #scrollToTopBtn {
@@ -281,11 +299,70 @@ h2 {
     justify-content: center;
     opacity: 0.5;
     transition: opacity 0.3s;
-  }
-  
-  #scrollToTopBtn:hover {
+}
+
+#scrollToTopBtn:hover {
     opacity: 1;
-  }
+}
+
+.form-control {
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+    padding: 0.75rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.form-label {
+    font-weight: 600;
+    color: #495057;
+}
+
+.input-group-text {
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+    border-radius: 8px 0 0 8px;
+}
+
+.recipe-textarea {
+    min-height: 150px;
+}
+
+.rating-input {
+    display: flex;
+    align-items: center;
+}
+
+.rating-stars {
+    margin-left: 10px;
+    font-size: 1.5rem;
+    color: #ffc107;
+}
+
+.custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+}
+
+.custom-file-input::before {
+    content: 'Choose file';
+    display: inline-block;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 8px;
+    padding: 8px 12px;
+    outline: none;
+    white-space: nowrap;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.custom-file-input:hover::before {
+    background-color: var(--secondary-color);
+}
 
 footer {
     background-color: var(--primary-color);
@@ -307,6 +384,9 @@ footer {
 @media (max-width: 768px) {
     .recipe-grid {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+    .card-body {
+        padding: 1.5rem;
     }
 }
 
