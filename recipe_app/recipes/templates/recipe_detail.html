@@ -8,5 +8,12 @@
         </div>
         <p>{{ recipe.description }}</p>
         <p>Rating: {{ recipe.rating }}</p>
+        
+        <h4 class="ingredients-heading">Ingredients:</h4>
+        <ul>
+            {% for ingredient in ingredients %}
+                <li>{{ ingredient }}</li>
+            {% endfor %}
+        </ul>
     </div>
 {% endblock %}

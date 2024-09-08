@@ -15,6 +15,9 @@ class Recipe(models.Model):
 
     def get_absolute_url(self):
         return reverse('recipe_detail', args=[str(self.id)])
+    
+    def get_ingredients_list(self):
+        return [ing.strip() for ing in self.ingredients.split('\n')]
 
     def __str__(self):
         return self.name

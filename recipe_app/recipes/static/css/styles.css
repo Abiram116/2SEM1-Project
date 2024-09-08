@@ -20,19 +20,29 @@ body {
     line-height: 1.6;
 }
 
-/* Updated Navbar Styles */
 .navbar {
     background-color: var(--primary-color);
     box-shadow: 0 2px 4px rgba(0,0,0,.1);
+    padding: 0.5rem 1rem;
+}
+
+.navbar-brand {
+    padding: 0;
 }
 
 .navbar-brand img {
-    height: 40px;
+    height: 60px;
+    width: auto;
+    max-width: none;
     transition: transform 0.3s ease;
 }
 
 .navbar-brand:hover img {
     transform: scale(1.05);
+}
+
+.navbar-light .navbar-nav {
+    align-items: center;
 }
 
 .navbar-light .navbar-nav .nav-link {
@@ -70,7 +80,6 @@ body {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(52, 152, 219, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
-/* Existing styles */
 header {
     color: white;
     padding: 1rem 2rem;
@@ -104,7 +113,7 @@ h2 {
 .recipe-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 2rem;
+    gap: 20px;
 }
 
 .recipe-card {
@@ -113,6 +122,8 @@ h2 {
     overflow: hidden;
     box-shadow: var(--card-shadow);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
 }
 
 .recipe-card:hover {
@@ -127,7 +138,10 @@ h2 {
 }
 
 .recipe-card-content {
-    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 15px;
 }
 
 .recipe-card h3 {
@@ -145,33 +159,27 @@ h2 {
 .recipe-card-actions {
     display: flex;
     justify-content: space-between;
-    gap: 1rem;
+    gap: 0.5rem;
+    margin-top: auto;
 }
 
-.recipe-card a, .recipe-card button {
+.recipe-card-actions .btn {
     flex: 1;
-    padding: 0.5rem 1rem;
-    text-align: center;
-    background-color: var(--secondary-color);
-    color: white;
-    text-decoration: none;
-    border: none;
-    border-radius: 4px;
+    padding: 0.5rem;
     font-size: 0.9rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.recipe-card a {
-    background-color: var(--primary-color);
+.recipe-card-actions .dropdown {
+    flex: 1;
 }
 
-.recipe-card a:hover {
-    background-color: #2980b9;
-}
-
-.recipe-card button:hover {
-    background-color: #27ae60;
+.recipe-card-actions .dropdown-toggle {
+    width: 100%;
+    text-align: center;
+    padding: 0.5rem;
 }
 
 .recipe-detail {
@@ -192,7 +200,7 @@ h2 {
 .recipe-detail-image-container {
     width: 100%;
     height: 0;
-    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    padding-bottom: 56.25%;
     position: relative;
     overflow: hidden;
     border-radius: 8px;
@@ -217,7 +225,6 @@ h2 {
     opacity: 0.7;
 }
 
-/* Profile Page Styles */
 .card {
     border: none;
     box-shadow: 0 4px 8px rgba(0,0,0,0.05);
@@ -248,9 +255,41 @@ h2 {
     border-color: var(--accent-color);
 }
 
+.dropdown-menu {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.dropdown-item {
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+.ingredients-heading {
+    font-size: 18px; /* Adjust font size as needed */
+    font-weight: normal; /* Make the font weight lighter */
+    margin-top: 20px; /* Add some spacing */
+    text-align: left; /* Align to the left */
+}
+
+#scrollToTopBtn {
+    z-index: 1030;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+  }
+  
+  #scrollToTopBtn:hover {
+    opacity: 1;
+  }
+
 footer {
     background-color: var(--primary-color);
-    color: white;
+    color: rgb(0, 0, 0);
     text-align: center;
     padding: 1rem;
     margin-top: auto;
@@ -268,6 +307,17 @@ footer {
 @media (max-width: 768px) {
     .recipe-grid {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+}
+
+@media (max-width: 576px) {
+    .recipe-card-actions {
+        flex-direction: column;
+    }
+
+    .recipe-card-actions .btn,
+    .recipe-card-actions .dropdown {
+        width: 100%;
     }
 }
 
