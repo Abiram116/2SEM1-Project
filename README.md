@@ -42,11 +42,11 @@ To run this project locally:
 4. **Activate the virtual environment:**
    - On Windows:
      ```bash
-     .\djProject\Scripts\activate
+     .\dj\Scripts\activate
      ```
    - On macOS/Linux:
      ```bash
-     source djProject/bin/activate
+     source dj/bin/activate
      ```
 5. **Install the dependencies:** (Can ignore this for now it's used in deploying stage)
    ```bash
